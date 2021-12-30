@@ -405,7 +405,7 @@ PlayerSettings:
     m_APIs: 10000000
     m_Automatic: 1
   - m_BuildTarget: AndroidPlayer
-    m_APIs: 08000000
+    m_APIs: 0b0000001500000008000000
     m_Automatic: 0
   m_BuildTargetVRSettings:
   - m_BuildTarget: Android
@@ -807,10 +807,13 @@ PlayerSettings:
     Build: 0
     Collab: 0
     ErrorHub: 0
+    Game Performance: 0
     Game_Performance: 0
     Hub: 0
     Purchasing: 0
+    UDP: 0
     UNet: 0
+    Unity Ads: 1
     Unity_Ads: 0
   luminIcon:
     m_Name: 
@@ -825,11 +828,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 
+  cloudProjectId: 5bd34348-e954-4be4-83a5-13475c5285c5
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Flappy Devil
+  organizationId: unity_5df5351d293a5b3b8fb3
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 1
   virtualTexturingSupportEnabled: 0
