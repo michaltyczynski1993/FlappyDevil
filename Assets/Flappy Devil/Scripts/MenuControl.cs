@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuControl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public AudioSource audioSource;
+    private float audioTimer;
+    private void Start() 
+    {
+        audioTimer = audioSource.clip.length;
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("Main");
@@ -15,5 +20,15 @@ public class MenuControl : MonoBehaviour
     {
         Application.Quit();
     }
-   
+     public void RestartLevel()
+    {
+        StartCoroutine(LoadCurrentLevelTimer(audioTimer));
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameControl.instance.nextLevel = false;
+    }
+    IEnumerator LoadCurrentLevelTimer(float audioTimer)
+    {
+        yield return new WaitForSeconds(audioTimer);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

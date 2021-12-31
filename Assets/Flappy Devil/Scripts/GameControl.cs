@@ -44,12 +44,6 @@ public static GameControl instance;            //A reference to our game control
             
     }
 
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        nextLevel = false;
-    }
-
     public void BirdScored()
     {
         //The bird can't score if the game is over.
