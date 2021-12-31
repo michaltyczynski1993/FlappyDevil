@@ -18,6 +18,7 @@ public static GameControl instance;            //A reference to our game control
     private int level = 1;
     public bool nextLevel = false;
     private int highScore = 0;
+    public InterstitialAd insterstitial;
     
     void Awake()
     {
@@ -33,14 +34,7 @@ public static GameControl instance;            //A reference to our game control
 
     void Update()
     {
-        //If the game is over and the player has pressed some input...
-        if (gameOver && Input.GetMouseButtonDown(0))
-        {
-            //...reload the current scene.
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            nextLevel = false;
-        }
-         if (gameOver && Input.GetKeyDown(KeyCode.Escape))
+        if (gameOver && Input.GetKeyDown(KeyCode.Escape))
         {
             //...back to menu
             SceneManager.LoadScene("MenuScene");
@@ -48,6 +42,12 @@ public static GameControl instance;            //A reference to our game control
         }
 
             
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        nextLevel = false;
     }
 
     public void BirdScored()
@@ -72,6 +72,11 @@ public static GameControl instance;            //A reference to our game control
         gameOvertext.SetActive(true);
         //Set the game to be over.
         gameOver = true;
+        if (InterstitialAd.loadCount == 3)
+        {
+            insterstitial.ShowAd();
+            InterstitialAd.loadCount = 0;
+        }
         
     }
     public void LevelUp()

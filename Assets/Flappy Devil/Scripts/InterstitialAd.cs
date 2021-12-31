@@ -7,7 +7,7 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     [SerializeField] string _iOsAdUnitId = "Interstitial_iOS";
     string _adUnitId;
  
-static int loadCount = 0;
+public static int loadCount = 0;
     void Awake()
     {
         // Get the Ad Unit ID for the current platform:
@@ -19,11 +19,7 @@ static int loadCount = 0;
 private void Start() 
 {
     LoadAd();    
-    if (loadCount % 6 == 0)  // only show ad every third time
-        {
-            ShowAd ();
-        }
-        loadCount++;
+    loadCount++;
 }
     // Load content to the Ad Unit:
     public void LoadAd()
