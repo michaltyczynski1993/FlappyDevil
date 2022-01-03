@@ -19,6 +19,8 @@ public static GameControl instance;            //A reference to our game control
     public bool nextLevel = false;
     private int highScore = 0;
     public InterstitialAd insterstitial;
+    public int coinCount = 0;
+    public Text coinNumber;
     
     void Awake()
     {
@@ -30,6 +32,10 @@ public static GameControl instance;            //A reference to our game control
         else if (instance != this)
             //...destroy this one because it is a duplicate.
             Destroy(gameObject);
+    }
+    private void Start() 
+    {
+        coinNumber.text = PlayerPrefs.GetInt("CoinCount").ToString();
     }
 
     void Update()
@@ -82,6 +88,7 @@ public static GameControl instance;            //A reference to our game control
         if (level == 3)
         {
             ColumnPool.instance.spawnRate = 1.5f;
+            CoinPool.instance.spawnRate = 3f;
         }
 
     }
@@ -92,5 +99,12 @@ public static GameControl instance;            //A reference to our game control
         {
             PlayerPrefs.SetInt("High Score", score);
         }
+    }
+    public void CoinCollected()
+    {
+        int myCoins = PlayerPrefs.GetInt("CoinCount");
+        myCoins++;
+        PlayerPrefs.SetInt("CoinCount", myCoins);
+        coinNumber.text = PlayerPrefs.GetInt("CoinCount").ToString();
     }
 }
