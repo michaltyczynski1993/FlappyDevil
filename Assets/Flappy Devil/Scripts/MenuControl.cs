@@ -31,4 +31,8 @@ public class MenuControl : MonoBehaviour
         yield return new WaitForSeconds(audioTimer);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+      public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
