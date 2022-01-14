@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class StoreControl : MonoBehaviour
 {
+    private int coins;
     //Skin 1 variables
     private int firstCost = 0;
     private bool isFirstBought = true;
-    private int coins;
     public Text firstSkinButtonText;
     //Skin 2 variables
     private int secondCost = 300;
@@ -30,12 +30,13 @@ public class StoreControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       CurrentSkin();
     }
     public void FirstSkin()
     {
         if(isFirstBought)
         {
+            currentSkin = 0;
            PlayerPrefs.SetInt("currentSkin", currentSkin);
            firstSkinButtonText.text = "Selected";
 
@@ -57,6 +58,7 @@ public class StoreControl : MonoBehaviour
     {
         if(isSecondBought)
         {
+            currentSkin = 1;
            PlayerPrefs.SetInt("currentSkin", currentSkin);
            secondSkinButtonText.text = "Selected";
 
@@ -79,10 +81,12 @@ public class StoreControl : MonoBehaviour
         if(currentSkin == 0)
         {
             firstSkinButtonText.text = "Selected";
+            secondSkinButtonText.text = "Select";
         }
         if(currentSkin == 1)
         {
-            firstSkinButtonText.text = "Selected";
+            secondSkinButtonText.text = "Selected";
+            firstSkinButtonText.text = "Select";
         }
     }
 }
