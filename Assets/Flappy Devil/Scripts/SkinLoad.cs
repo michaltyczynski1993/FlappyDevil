@@ -9,6 +9,15 @@ public class SkinLoad : MonoBehaviour
     private GameObject player;
     private void Awake() 
     {
+        if (!PlayerPrefs.HasKey("currentSkin"))
+        {
+            PlayerPrefs.SetInt("currentSkin", 0);
+        }
+        else
+        {
+        currentSkin = PlayerPrefs.GetInt("currentSkin");
+        player = this.gameObject;
+        }
         currentSkin = PlayerPrefs.GetInt("currentSkin");
         player = this.gameObject;
     }

@@ -81,9 +81,17 @@ public class StoreControl : MonoBehaviour
         if(currentSkin == 0)
         {
             firstSkinButtonText.text = "Selected";
-            secondSkinButtonText.text = "Select";
+            if (isSecondBought)
+            {
+                secondSkinButtonText.text = "Select";
+            }
+            else
+            {
+                secondSkinButtonText.text = secondCost.ToString() + " $";
+            }
+            
         }
-        if(currentSkin == 1)
+        if(currentSkin == 1 && isSecondBought == true)
         {
             secondSkinButtonText.text = "Selected";
             firstSkinButtonText.text = "Select";
