@@ -11,10 +11,14 @@ public class StoreControl : MonoBehaviour
     private bool isFirstBought = true;
     public Text firstSkinButtonText;
     //Skin 2 variables
-    private int secondCost = 300;
+    private int secondCost = 200;
     private bool isSecondBought;
     public Text secondSkinButtonText;
-
+    //Skin 3 variables
+    private int thirdCost = 400;
+    private bool isThirdBought;
+    public Text thirdSkinButtonText;
+    //Skin 4 variables
     private int currentSkin;
 
     void Start()
@@ -22,6 +26,7 @@ public class StoreControl : MonoBehaviour
         PlayerPrefs.SetInt("isFirstSkinBought", isFirstBought ? 1:0);
         isFirstBought = PlayerPrefs.GetInt("isFirstSkinBought")==1;
         isSecondBought = PlayerPrefs.GetInt("isSecondSkinBought")==1;
+        isThirdBought = PlayerPrefs.GetInt("isThirdSkinBought")==1;
         coins = PlayerPrefs.GetInt("CoinCount");
         currentSkin = PlayerPrefs.GetInt("currentSkin");
         CurrentSkin();
@@ -60,7 +65,6 @@ public class StoreControl : MonoBehaviour
         {
             currentSkin = 1;
            PlayerPrefs.SetInt("currentSkin", currentSkin);
-           secondSkinButtonText.text = "Selected";
 
         }
         else
@@ -76,6 +80,27 @@ public class StoreControl : MonoBehaviour
             }
         }
     }
+    public void ThirdSkin()
+    {
+        if(isThirdBought)
+        {
+            currentSkin = 2;
+           PlayerPrefs.SetInt("currentSkin", currentSkin);
+
+        }
+        else
+        {
+            if (coins >= thirdCost)
+            {
+                coins = coins-thirdCost;
+                PlayerPrefs.SetInt("CoinCount", coins);
+                GameControl.instance.coinNumber.text = PlayerPrefs.GetInt("CoinCount").ToString();
+                isThirdBought = true;
+                PlayerPrefs.SetInt("isThirdSkinBought", isThirdBought ? 1 : 0);
+                thirdSkinButtonText.text = "Select";
+            }
+        }
+    }
     public void CurrentSkin()
     {
         if(currentSkin == 0)
@@ -85,16 +110,32 @@ public class StoreControl : MonoBehaviour
             {
                 secondSkinButtonText.text = "Select";
             }
-            else
-            {
-                secondSkinButtonText.text = secondCost.ToString() + " $";
-            }
             
         }
-        if(currentSkin == 1 && isSecondBought == true)
+        if(currentSkin == 1)
         {
-            secondSkinButtonText.text = "Selected";
+            if (isSecondBought)
+            {
+                secondSkinButtonText.text = "Selected";
+            }
+            if(isThirdBought)
+            {
+                thirdSkinButtonText.text = "Select"; 
+            }
             firstSkinButtonText.text = "Select";
+        }
+         if(currentSkin == 2)
+        {
+           if (isSecondBought)
+            {
+                secondSkinButtonText.text = "Select";
+            }
+            if(isThirdBought)
+            {
+                thirdSkinButtonText.text = "Selected"; 
+            }
+            firstSkinButtonText.text = "Select";
+            
         }
     }
 }
