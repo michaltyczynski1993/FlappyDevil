@@ -22,6 +22,7 @@ public class Cheat : MonoBehaviour
         PlayerPrefs.DeleteKey("isFirstSkinBought");
         PlayerPrefs.DeleteKey("isSecondSkinBought");
         PlayerPrefs.DeleteKey("isThirdSkinBought");
+        PlayerPrefs.DeleteKey("isFourthSkinBought");
         PlayerPrefs.DeleteKey("currentSkin");
     }
 }

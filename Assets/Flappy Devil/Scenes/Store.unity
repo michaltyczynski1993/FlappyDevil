@@ -371,6 +371,7 @@ MonoBehaviour:
   firstSkinButtonText: {fileID: 125491631}
   secondSkinButtonText: {fileID: 533240177}
   thirdSkinButtonText: {fileID: 957608457}
+  fourthSkinButtonText: {fileID: 1426584409}
 --- !u!1 &153406817
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +732,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 143852988}
         m_TargetAssemblyTypeName: StoreControl, Assembly-CSharp
-        m_MethodName: SecondSkin
+        m_MethodName: FourthSkin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
