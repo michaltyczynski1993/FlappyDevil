@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuControl : MonoBehaviour
 {
-    public AudioSource audioSource;
+    [SerializeField]private AudioSource audioSource;
     private float audioTimer;
     private void Start() 
     {
